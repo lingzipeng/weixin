@@ -8,7 +8,7 @@ A new Flutter project.
 
 ## 微信
 
-![image](https://github.com/ZhiliangMa/MPU6500-HMC5983-AK8975-BMP280-MS5611-10DOF-IMU-PCB/blob/main/img/IMU-V5-TOP.jpg)
+<img src="https://github.com/Chen-Yi-Ran/OnlineStudy/blob/master/file/course.jpg" width="210px">
 
 ## 通讯录
 
