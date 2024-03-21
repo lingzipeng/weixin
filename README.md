@@ -8,7 +8,7 @@ A new Flutter project.
 
 ## 微信
 
-<img src="https://github.com/lingzipeng/weixin/blob/main/assets/pic/Snipaste_2024-03-21_14-34-19.png" width="210px">
+<img src="https://github.com/lingzipeng/weixin/blob/main/assets/pic/Snipaste_2024-03-21_14-34-19.png" width="310px">
 
 ## 通讯录
 
