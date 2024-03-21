@@ -17,7 +17,6 @@ class _MineViewState extends State {
         body: ListView(
       children: <Widget>[
         Container(
-          
           color: Colors.grey[200],
           child: Container(
             height: 80.0,
@@ -122,10 +121,10 @@ class _MineViewState extends State {
             height: 50.0,
             child: ListTile(
               leading: Image.asset(
-              'images/MoreSetting@2x.png',
-              width: 24, // 设置图片宽度
-              height: 24, // 设置图片高度
-            ),
+                'images/MoreSetting@2x.png',
+                width: 24, // 设置图片宽度
+                height: 24, // 设置图片高度
+              ),
               title: const Text("设置"),
             ),
           ),

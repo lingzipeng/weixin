@@ -5,10 +5,16 @@ class a extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Hello, Container!'),
-      ),
+    return Container(
+        alignment: const Alignment(0.0,0.0),
+        child: Stack(
+          children: [
+            Positioned(child: Container(
+              color: const Color(0xD0B2C1CC),
+              child: const Text("老铁666"),
+            ))
+          ],
+        )
     );
   }
 }

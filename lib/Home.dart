@@ -23,7 +23,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const XKTabBar(title: '刘备',);
+              return const XKTabBar(title: '刘备');
             }));
           },
           leading: Image.asset(
@@ -39,7 +39,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const XKTabBar(title: '曹操',);
+              return const XKTabBar(title: '曹操');
             }));
           },
           leading: Image.asset(
@@ -55,7 +55,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const XKTabBar(title: '孙权',);
+              return const XKTabBar(title: '孙权');
             }));
           },
           leading: Image.asset(
@@ -71,7 +71,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const XKTabBar(title: '关羽',);
+              return const XKTabBar(title: '关羽');
             }));
           },
           leading: Image.asset(
@@ -87,7 +87,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const XKTabBar(title: '张飞',);
+              return const XKTabBar(title: '张飞');
             }));
           },
           leading: Image.asset(
@@ -103,7 +103,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const XKTabBar(title: '吕布',);
+              return const XKTabBar(title: '吕布');
             }));
           },
           leading: Image.asset(
@@ -114,12 +114,12 @@ class _HomeViewState extends State {
           ),
           title: const Text("吕布"),
           subtitle: const Text("大丈夫生居天地之间，岂能郁郁久居人下。"),
-          trailing: const Text("上个月"),
+          trailing: const Text("上一个月"),
         ),
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return const XKTabBar(title: '赵云',);
+              return const XKTabBar(title: '赵云');
             }));
           },
           leading: Image.asset(
