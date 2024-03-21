@@ -5,9 +5,11 @@ import 'ContactView.dart';
 import 'FindView.dart';
 import 'MineView.dart';
 
-void main() => runApp(myApp());
+void main() => runApp(const myApp());
 
 class myApp extends StatelessWidget {
+  const myApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -18,15 +20,16 @@ class myApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(
             0xff, 0x1d, 0xc0, 0x63), //Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
       ),
-      home: Center(
+      home: const Center(
         child: RandomWords(),
       ),
     );
   }
 }
 
+//自定义AppBar
 class MAppBar extends StatefulWidget implements PreferredSizeWidget {
-  MAppBar({required this.child}) : assert(child != null);
+  const MAppBar({super.key, required this.child});
   final Widget child;
   @override
   Size get preferredSize {
@@ -50,6 +53,8 @@ class MAppBarState extends State<MAppBar> {
 }
 
 class RandomWords extends StatefulWidget {
+  const RandomWords({super.key});
+
   @override
   createState() => RandomWordsState();
 }
@@ -94,10 +99,10 @@ class RandomWordsState extends State<RandomWords> {
   ];
 
   final List<StatefulWidget> vcSet = [
-    HomeView(),
-    ContactView(),
-    FindView(),
-    MineView()
+    const HomeView(),
+    const ContactView(),
+    const FindView(),
+    const MineView()
   ];
   int _sindex = 0;
   String _title = "微信";

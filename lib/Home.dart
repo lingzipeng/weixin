@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'XKTabBar.dart';
 
 class HomeView extends StatefulWidget {
+  const HomeView({super.key});
+
   @override
   _HomeViewState createState() => _HomeViewState();
 }
@@ -21,7 +23,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return XKTabBar();
+              return const XKTabBar(title: '刘备',);
             }));
           },
           leading: Image.asset(
@@ -37,7 +39,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return XKTabBar();
+              return const XKTabBar(title: '曹操',);
             }));
           },
           leading: Image.asset(
@@ -53,7 +55,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return XKTabBar();
+              return const XKTabBar(title: '孙权',);
             }));
           },
           leading: Image.asset(
@@ -69,7 +71,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return XKTabBar();
+              return const XKTabBar(title: '关羽',);
             }));
           },
           leading: Image.asset(
@@ -85,7 +87,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return XKTabBar();
+              return const XKTabBar(title: '张飞',);
             }));
           },
           leading: Image.asset(
@@ -101,7 +103,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return XKTabBar();
+              return const XKTabBar(title: '吕布',);
             }));
           },
           leading: Image.asset(
@@ -117,7 +119,7 @@ class _HomeViewState extends State {
         ListTile(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return XKTabBar();
+              return const XKTabBar(title: '赵云',);
             }));
           },
           leading: Image.asset(

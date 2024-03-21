@@ -3,6 +3,8 @@ import 'WCAvatar.dart';
 import 'TimeLine/TimeLine.dart';
 
 class FindView extends StatefulWidget {
+  const FindView({super.key});
+
   @override
   _FindViewState createState() => _FindViewState();
 }

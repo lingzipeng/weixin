@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MWalletVC extends StatefulWidget {
+  const MWalletVC({super.key});
+
   @override
   _MWalletVCState createState() => _MWalletVCState();
 }
@@ -10,7 +12,7 @@ class _MWalletVCState extends State<MWalletVC> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("我"),
+        title: const Text("钱包"),
         backgroundColor: Colors.grey[500],
       ),
       body: ListView(
@@ -88,9 +90,9 @@ class _MWalletVCState extends State<MWalletVC> {
               ],
             ),
           ),
-          Container(
+          const SizedBox(
             height: 90.0,
-            child: const Row(
+            child: Row(
               //生活缴费，Q币，城市服务
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[

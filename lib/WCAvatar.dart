@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 class WCAvatar extends StatefulWidget {
+  const WCAvatar({super.key});
+
   @override
   _WCAvatarState createState() => _WCAvatarState();
 }

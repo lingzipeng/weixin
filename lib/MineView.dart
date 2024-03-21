@@ -3,6 +3,8 @@ import 'Mine/MInfoVC.dart';
 import 'Mine/MWalletVC.dart';
 
 class MineView extends StatefulWidget {
+  const MineView({super.key});
+
   @override
   _MineViewState createState() => _MineViewState();
 }
@@ -15,7 +17,7 @@ class _MineViewState extends State {
         body: ListView(
       children: <Widget>[
         Container(
-          padding: const EdgeInsets.only(top: 20.0),
+          
           color: Colors.grey[200],
           child: Container(
             height: 80.0,

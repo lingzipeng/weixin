@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../WCAvatar.dart';
 
 class TimeLinePage extends StatefulWidget {
+  const TimeLinePage({super.key});
+
   @override
   _TimeLinePageState createState() => _TimeLinePageState();
 }
@@ -24,7 +26,7 @@ class _TimeLinePageState extends State<TimeLinePage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      WCAvatar(),
+                      const WCAvatar(),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
