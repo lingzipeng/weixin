@@ -18,13 +18,13 @@ class _FindViewState extends State {
       color: const Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
       // height: 54.0 + topY + lineH ,
       child: Column(
-        children: <Widget>[
+        children: [
           Container(
               height: 54.0 + lineH,
               color: Colors.white,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
+                children: [
                   leftrow(iconName, contentName),
                   Container(
                     width: 80,
@@ -32,7 +32,7 @@ class _FindViewState extends State {
                     color: Colors.transparent,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
+                      children: [
                         timelinecontentName.isNotEmpty
                             ? WCAvatar()
                             : Container(),
@@ -52,7 +52,7 @@ class _FindViewState extends State {
           SizedBox(
             height: lineH,
             child: Row(
-              children: <Widget>[
+              children: [
                 Container(
                   width: 60,
                   color: Colors.white,
@@ -83,7 +83,7 @@ class _FindViewState extends State {
   Row leftrow(String iconName, String contentName) {
     return Row(
         // mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
+        children: [
           Container(width: 17),
           Image.asset(
             iconName,
@@ -107,7 +107,7 @@ class _FindViewState extends State {
     return Scaffold(
         backgroundColor: Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
         body: ListView(
-          children: <Widget>[
+          children: [
             GestureDetector(
               onTap: () {
                 print("点朋友圈Cell");
