@@ -19,8 +19,10 @@ class _XKTabBar extends State<XKTabBar> {
         title: Text(widget.title),
         backgroundColor: const Color.fromARGB(255, 234, 230, 230),
       ),
-      body: const Center(
-        child: a(),
+      body: ListView(
+        children: const [
+          a(),
+        ],
       ),
     );
   }

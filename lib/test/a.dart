@@ -7,6 +7,7 @@ class a extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         alignment: const Alignment(0.0,0.0),
+        height: 100.0,
         child: Stack(
           children: [
             Positioned(child: Container(
