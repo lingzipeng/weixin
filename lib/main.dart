@@ -122,19 +122,11 @@ class RandomWordsState extends State<RandomWords> {
 
   Scaffold buildHome() {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
-        elevation: 0.0,
-        title: Text(_title),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.list),
-            onPressed: () {
-              print("点击了-index");
-            },
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: const Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
+      //   elevation: 0.0,
+      //   title: Text(_title),
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.grey,
         selectedItemColor: const Color.fromARGB(0xff, 0x26, 0x73, 0x25),

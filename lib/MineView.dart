@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Mine/MInfoVC.dart';
 import 'Mine/MWalletVC.dart';
+import 'other/line.dart';
 
 class MineView extends StatefulWidget {
   const MineView({super.key});
@@ -17,26 +18,23 @@ class _MineViewState extends State {
         body: ListView(
       children: <Widget>[
         Container(
-          color: Colors.grey[200],
-          child: Container(
-            height: 80.0,
-            color: Colors.white,
-            child: ListTile(
-              leading: Image.asset(
-                "images/xiaoheizi.jpg",
-                width: 50.0,
-                height: 50.0,
-              ),
-              title: const Text("小黑子"),
-              subtitle: const Text("微信号：xiaoheizi"),
-              trailing: const Icon(Icons.fullscreen),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return const MInfoVC();
-                }));
-              },
+          height: 150.0,
+          color: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 50.0),
+          child: ListTile(
+            leading: Image.asset(
+              "images/xiaoheizi.jpg",
+              width: 50.0,
+              height: 50.0,
             ),
+            title: const Text("小黑子"),
+            subtitle: const Text("微信号：xiaoheizi"),
+            trailing: const Icon(Icons.fullscreen),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return const MInfoVC();
+              }));
+            },
           ),
         ),
         Container(
@@ -77,6 +75,7 @@ class _MineViewState extends State {
             ),
           ),
         ),
+        const line(),
         Container(
           color: Colors.white,
           height: 50.0,
@@ -89,6 +88,7 @@ class _MineViewState extends State {
             title: const Text("相册"),
           ),
         ),
+        const line(),
         Container(
           color: Colors.white,
           height: 50.0,
@@ -101,6 +101,7 @@ class _MineViewState extends State {
             title: const Text("卡包"),
           ),
         ),
+        const line(),
         Container(
           color: Colors.white,
           height: 50.0,
@@ -128,6 +129,10 @@ class _MineViewState extends State {
               title: const Text("设置"),
             ),
           ),
+        ),
+        Container(
+          padding: const EdgeInsets.only(top: 300.0),
+          color: Colors.grey[200],
         ),
       ],
     ));

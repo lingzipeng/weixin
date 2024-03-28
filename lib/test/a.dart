@@ -1,4 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
+import '../api/api.dart';
+
 //测试
 class a extends StatelessWidget {
   const a({super.key});
@@ -6,16 +10,14 @@ class a extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        alignment: const Alignment(0.0,0.0),
+        alignment: const Alignment(0.0, 0.0),
         height: 100.0,
-        child: Stack(
-          children: [
-            Positioned(child: Container(
-              color: const Color(0xD0B2C1CC),
-              child: const Text("老铁666"),
-            ))
-          ],
-        )
-    );
+        child: ElevatedButton(
+          onPressed: () { },
+          child: const Text("老铁666"),
+        ));
   }
+
+
+
 }

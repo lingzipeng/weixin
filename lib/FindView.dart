@@ -105,6 +105,11 @@ class _FindViewState extends State {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
+          elevation: 0.0,
+          title: Text("发现"),
+        ),
         backgroundColor: Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
         body: ListView(
           children: [

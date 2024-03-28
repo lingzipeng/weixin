@@ -30,7 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  dio: ^5.4.1
+  flutter_easyloading: ^3.0.5
+  common_utils: ^2.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -58,69 +60,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-      - images/img.jpg
-      - images/lebron.jpg
-      - images/xk.jpg
-      - images/a001.jpg
-      - images/a002.jpg
-      - images/a003.jpg
-      - images/a004.jpg
-      - images/a005.jpg
-      - assets/tabbar_contacts@3x.png
-      - assets/tabbar_contactsHL@3x.png
-      - assets/tabbar_discover@3x.png
-      - assets/tabbar_discoverHL@3x.png
-      - assets/tabbar_mainframe@3x.png
-      - assets/tabbar_mainframeHL@3x.png
-      - assets/tabbar_me@3x.png
-      - assets/tabbar_meHL@3x.png
-      - assets/haugnbo.png
-      - images/ff_IconShowAlbum@3x.png
-      - images/ff_IconQRCode@3x.png
-      - images/ff_IconShake@3x.png
-      - images/ff_IconBrowse1@3x.png
-      - images/ff_IconSearch1@3x.png
-      - images/ff_IconBottle@3x.png
-      - images/ff_IconNearby@3x.png
-      - images/GameCenterH5GameMenuBtn@2x.png
-      - images/PaidDetail_MiniProgram@3x.png
-      - images/arrow_ico@3x.png
-      - images/AlbumHBSmallArror_Golden@2x.png
-      - images/Card_ArrowGrey@2x.png
-      - images/arrowOnclick_ico@2x.png
-      - images/Shake_icon_cardPackHL@2x.png
-      - images/MoreMyFavorites@2x.png
-      - images/MyCardPackageIcon@2x.png
-      - images/MoreExpressionShops@2x.png
-      - images/MoreMyAlbum@2x.png
-      - images/MoreSetting@2x.png
-      - images/add_friend_icon_addgroup@2x.png
-      - images/add_friend_icon_offical@2x.png
-      - images/Contact_icon_ContactTag@2x.png
-      - images/plugins_FriendNotify@2x.png
-      - images/刘备.png
-      - images/曹操.png
-      - images/孙权.png
-      - images/关羽.png
-      - images/张飞.png
-      - images/吕布.png
-      - images/赵云.png
-      - images/诸葛亮.png
-      - images/周瑜.png
-      - images/鲁肃.png
-      - images/司马懿.png
-      - images/袁绍.png
-      - images/华佗.png
-      - images/华雄.png
-      - images/公孙瓒.png
-      - images/刘表.png
-      - images/典韦.png
-      - images/黄忠.png
-      - images/刘禅.png
-      - images/徐庶.png
-      - images/郭嘉.png
-      - images/荀攸.png
-      - images/xiaoheizi.jpg
+      - images/
+      - assets/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
