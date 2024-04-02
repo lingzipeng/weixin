@@ -179,6 +179,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.3"
+  pinyin:
+    dependency: "direct main"
+    description:
+      name: pinyin
+      sha256: "509a51abec754d8b69cc94074b2bdb9f4a407bc4daf5723ec6d995b7682a048a"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.2.0"
   rational:
     dependency: transitive
     description:

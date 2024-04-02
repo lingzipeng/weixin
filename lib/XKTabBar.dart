@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:weixin/api/api.dart';
+import 'package:weixin/widget/contact_people.dart';
 import './dio/request.dart';
 import 'dio/httpUtil.dart';
 
@@ -14,14 +15,11 @@ class XKTabBar extends StatefulWidget {
 }
 
 class _XKTabBar extends State<XKTabBar> {
-  
-
   void sendPostRequest() async {
     // 构建请求体
     var response = await HttpUtil().get("http://www.baidu.com");
     var data = response.toString();
     print('--------:$data');
-    
   }
 
   // void sendGetRequest() async {
@@ -45,15 +43,17 @@ class _XKTabBar extends State<XKTabBar> {
           title: Text(widget.title),
           backgroundColor: const Color.fromARGB(255, 234, 230, 230),
         ),
-        body: Container(
-            alignment: const Alignment(0.0, 0.0),
-            height: 100.0,
-            child: ElevatedButton(
-              onPressed: () {
-                // sendGetRequest();
-                sendPostRequest();
-              },
-              child: const Text("老铁666"),
-            )));
+        body: const Text('data')
+        // Container(
+        //     alignment: const Alignment(0.0, 0.0),
+        //     height: 100.0,
+        //     child: ElevatedButton(
+        //       onPressed: () {
+        //         // sendGetRequest();
+        //         sendPostRequest();
+        //       },
+        //       child: const Text("老铁666"),
+        //     ))
+        );
   }
 }

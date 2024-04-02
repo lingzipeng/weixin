@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pinyin/pinyin.dart';
+import 'package:weixin/widget/IndexBar.dart';
+import 'package:weixin/widget/contact_people.dart';
 
 import 'other/line.dart';
 
@@ -10,6 +13,156 @@ class ContactView extends StatefulWidget {
 }
 
 class _ContactViewState extends State {
+  //微信索引条
+  List<String> side = [
+    '↑',
+    '✫',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+    '#'
+  ];
+
+  List<Widget> words = [];
+
+  List<String> head = ['新的朋友', '群聊', '标签', '公众号'];
+  List<String> titlesList = [
+    '刘备',
+    '孙权',
+    "诸葛亮",
+    "赵云",
+    "周瑜",
+    "鲁肃",
+    "司马懿",
+    "袁绍",
+    "华佗",
+    "华雄",
+    "公孙瓒",
+    "刘表",
+    "典韦",
+    "黄忠",
+    "刘禅",
+    "徐庶",
+    "郭嘉",
+    "荀攸",
+    '曹操',
+  ];
+
+  // final Map _groupOffsetMap = {
+  //   // side[0]:0.0,
+  // };
+  late final Map<String, double> _groupOffsetMap;
+
+  //各个字母联系人的高度
+  final Map<String, double> _groupHeight = {
+    'A': 0.0,
+    'B': 0.0,
+    'C': 0.0,
+    'D': 0.0,
+    'E': 0.0,
+    'F': 0.0,
+    'G': 0.0,
+    'H': 0.0,
+    'I': 0.0,
+    'J': 0.0,
+    'K': 0.0,
+    'L': 0.0,
+    'M': 0.0,
+    'N': 0.0,
+    'O': 0.0,
+    'P': 0.0,
+    'Q': 0.0,
+    'R': 0.0,
+    'S': 0.0,
+    'T': 0.0,
+    'U': 0.0,
+    'V': 0.0,
+    'W': 0.0,
+    'X': 0.0,
+    'Y': 0.0,
+    'Z': 0.0,
+    '#': 0.0,
+  };
+
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+
+    titlesList.sort((String a, String b) {
+      String aPinyin = PinyinHelper.getFirstWordPinyin(a).toUpperCase();
+      String bPinyin = PinyinHelper.getFirstWordPinyin(b).toUpperCase();
+      return aPinyin.compareTo(bPinyin); // 按照拼音首字母顺序比较
+    });
+
+    for (int i = 0; i < side.length; i++) {
+      words.add(Expanded(
+          child: Text(side[i],
+              style: const TextStyle(fontSize: 10, color: Colors.grey))));
+    }
+
+    _groupOffsetMap = {
+      side[0]: 0.0,
+      side[1]: 0.0,
+    };
+    double groupOffset = 50.5 * head.length;
+    for (int i = 0; i < titlesList.length; i++) {
+      // if (i == 2) {
+      //   _groupOffsetMap.addAll({side[i]: groupOffset});
+      //   //增加高度
+      //   //groupOffset = groupOffset
+      // }
+      //
+      if (i == 0) {
+        _groupOffsetMap.addAll({'C': groupOffset});
+      }
+      if( i >= 1){
+        if (PinyinHelper.getFirstWordPinyin(titlesList[i-1])
+            .substring(0, 1)
+            .toUpperCase() ==
+            PinyinHelper.getFirstWordPinyin(titlesList[i])
+                .substring(0, 1)
+                .toUpperCase()) {
+          groupOffset = groupOffset + 50.5;
+        } else {
+          groupOffset = groupOffset + 80.5;
+          _groupOffsetMap.addAll({
+            PinyinHelper.getFirstWordPinyin(titlesList[i])
+                .substring(0, 1)
+                .toUpperCase(): groupOffset
+          });
+        }
+      }
+
+      // }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -17,389 +170,81 @@ class _ContactViewState extends State {
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
           elevation: 0.0,
-          title: Text("通讯录"),
+          title: const Text("通讯录"),
         ),
-        body: ListView(
-          children: <Widget>[
+        body: Stack(
+          children: [
             Container(
-              color: Colors.grey[200],
-              padding: const EdgeInsets.only(top: 10.0),
-              child: Container(
-                height: 50.0,
-                color: Colors.white,
-                child: ListTile(
-                  title: const Text("新的朋友"),
-                  //图片调节为圆角
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(5), // 设置圆角半径
-                    child: Image.asset(
-                      'images/plugins_FriendNotify@2x.png',
-                      width: 24, // 设置图片宽度
-                      height: 24, // 设置图片高度
-                    ),
-                  ),
-                ),
-              ),
+              child: ListView.builder(
+                  controller: _scrollController,
+                  itemCount: titlesList.length + head.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index < head.length) {
+                      return ContactPeople(head[index]);
+                    }
+                    if (index == head.length) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 30.0,
+                            child: Text('  C'),
+                          ),
+                          ContactPeople(titlesList[index - 4]),
+                        ],
+                      );
+                    }
+                    if (PinyinHelper.getFirstWordPinyin(titlesList[index - 4])
+                            .substring(0, 1)
+                            .toUpperCase() ==
+                        PinyinHelper.getFirstWordPinyin(titlesList[index - 5])
+                            .substring(0, 1)
+                            .toUpperCase()) {
+                      //长度加一
+                      // _groupHeight[
+                      //     PinyinHelper.getFirstWordPinyin(titlesList[index - 4])
+                      //         .substring(0, 1)
+                      //         .toUpperCase()] = 50.5 +
+                      //     _groupHeight[PinyinHelper.getFirstWordPinyin(
+                      //             titlesList[index - 4])
+                      //         .substring(0, 1)
+                      //         .toUpperCase()]!;
+                      return ContactPeople(titlesList[index - 4]);
+                    } else {
+                      // 长度加一
+                      // _groupHeight[
+                      //     PinyinHelper.getFirstWordPinyin(titlesList[index - 4])
+                      //         .substring(0, 1)
+                      //         .toUpperCase()] = 50.5 +
+                      //     _groupHeight[PinyinHelper.getFirstWordPinyin(
+                      //             titlesList[index - 4])
+                      //         .substring(0, 1)
+                      //         .toUpperCase()]!;
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 30.0,
+                            child: Text(
+                                '  ${PinyinHelper.getFirstWordPinyin(titlesList[index - 4]).substring(0, 1).toUpperCase()}'),
+                          ),
+                          ContactPeople(titlesList[index - 4]),
+                        ],
+                      );
+                    }
+                  }),
             ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("群聊"),
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(5), // 设置圆角半径
-                  child: Image.asset(
-                    'images/add_friend_icon_addgroup@2x.png',
-                    width: 24, // 设置图片宽度
-                    height: 24, // 设置图片高度
-                  ),
-                ),
-              ),
+            IndexBar(
+              words,
+              side,
+              indexBarCallBack: (String str) {
+                print('========${_groupOffsetMap[str]}====$str');
+                _scrollController.animateTo(_groupOffsetMap[str]!,
+                    duration: const Duration(microseconds: 100),
+                    curve: Curves.easeIn);
+              },
             ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("标签"),
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(5), // 设置圆角半径
-                  child: Image.asset(
-                    'images/Contact_icon_ContactTag@2x.png',
-                    width: 24, // 设置图片宽度
-                    height: 24, // 设置图片高度
-                  ),
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("公众号"),
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(5), // 设置圆角半径
-                  child: Image.asset(
-                    'images/add_friend_icon_offical@2x.png',
-                    width: 24, // 设置图片宽度
-                    height: 24, // 设置图片高度
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              color: Colors.grey[200],
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Container(
-                height: 50.0,
-                color: Colors.white,
-                child: ListTile(
-                  title: const Text("赵云"),
-                  leading: Image.asset(
-                    "images/赵云.png",
-                    width: 35.0,
-                    height: 35.0,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("吕布"),
-                leading: Image.asset(
-                  "images/吕布.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("张飞"),
-                leading: Image.asset(
-                  "images/张飞.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("关羽"),
-                leading: Image.asset(
-                  "images/关羽.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("刘备"),
-                leading: Image.asset(
-                  "images/刘备.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("曹操"),
-                leading: Image.asset(
-                  "images/曹操.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("孙权"),
-                leading: Image.asset(
-                  "images/孙权.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("诸葛亮"),
-                leading: Image.asset(
-                  "images/诸葛亮.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("周瑜"),
-                leading: Image.asset(
-                  "images/周瑜.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("鲁肃"),
-                leading: Image.asset(
-                  "images/鲁肃.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("司马懿"),
-                leading: Image.asset(
-                  "images/司马懿.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("袁绍"),
-                leading: Image.asset(
-                  "images/袁绍.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("华佗"),
-                leading: Image.asset(
-                  "images/华佗.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("华雄"),
-                leading: Image.asset(
-                  "images/华雄.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("公孙瓒"),
-                leading: Image.asset(
-                  "images/公孙瓒.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("刘表"),
-                leading: Image.asset(
-                  "images/刘表.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("典韦"),
-                leading: Image.asset(
-                  "images/典韦.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("黄忠"),
-                leading: Image.asset(
-                  "images/黄忠.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("刘禅"),
-                leading: Image.asset(
-                  "images/刘禅.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("徐庶"),
-                leading: Image.asset(
-                  "images/徐庶.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("郭嘉"),
-                leading: Image.asset(
-                  "images/郭嘉.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const line(),
-            Container(
-              height: 50.0,
-              color: Colors.white,
-              child: ListTile(
-                title: const Text("荀攸"),
-                leading: Image.asset(
-                  "images/荀攸.png",
-                  width: 35.0,
-                  height: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            //indexBarCallBack: (String str) {
           ],
         ));
   }
