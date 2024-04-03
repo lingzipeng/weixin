@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weixin/search_page.dart';
 import 'XKTabBar.dart';
 import 'other/line.dart';
 
@@ -16,11 +17,20 @@ class _HomeViewState extends State {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          const SizedBox(
-            height: 33,
-            width: 33,
-            child: Image(
-              image: AssetImage('images/Fav_Search_Icon@3x.png'),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearcherBar(),
+                  ));
+            },
+            child: const SizedBox(
+              height: 33,
+              width: 33,
+              child: Image(
+                image: AssetImage('images/Fav_Search_Icon@3x.png'),
+              ),
             ),
           ),
           const SizedBox(
