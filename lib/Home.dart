@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weixin/search_page.dart';
 import 'XKTabBar.dart';
+import 'chat_screen.dart';
 import 'other/line.dart';
 
 class HomeView extends StatefulWidget {
@@ -36,14 +37,23 @@ class _HomeViewState extends State {
           const SizedBox(
             width: 12.0,
           ),
-          Container(
-            height: 28,
-            width: 28,
-            margin: const EdgeInsets.only(right: 10),
-            child: const Image(
-              image: AssetImage('images/Fav_List_Add_Icon@3x.png'),
-            ),
-          )
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChatScreen(),
+                  ));
+            },
+            child: Container(
+              height: 28,
+              width: 28,
+              margin: const EdgeInsets.only(right: 10),
+              child: const Image(
+                image: AssetImage('images/Fav_List_Add_Icon@3x.png'),
+              ),
+            )
+          ),
         ],
         backgroundColor: const Color.fromARGB(0xff, 0xf2, 0xf2, 0xf2),
         elevation: 0.0,

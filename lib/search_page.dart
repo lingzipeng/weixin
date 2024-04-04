@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weixin/widget/searcher_people.dart';
 
+import 'Home.dart';
+
 
 class SearcherBar extends StatefulWidget {
   const SearcherBar({super.key});
@@ -147,7 +149,14 @@ class _SearcherBarState extends State<SearcherBar> {
                           ],
                         ),
                       )),
-                  const Text('取消'),
+
+                  GestureDetector(
+                    onTap: () {
+                      //返回首页
+                      Navigator.pop(context);
+                    },
+                    child: const Text('取消'),
+                  ),
                 ],
               ),
             ),

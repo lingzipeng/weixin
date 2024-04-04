@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:weixin/api/api.dart';
 import 'package:weixin/widget/contact_people.dart';
 import './dio/request.dart';
+import 'chat_screen.dart';
 import 'dio/httpUtil.dart';
 
 class XKTabBar extends StatefulWidget {
@@ -43,7 +44,7 @@ class _XKTabBar extends State<XKTabBar> {
           title: Text(widget.title),
           backgroundColor: const Color.fromARGB(255, 234, 230, 230),
         ),
-        body: const Text('data')
+        body: ChatScreen(),
         // Container(
         //     alignment: const Alignment(0.0, 0.0),
         //     height: 100.0,
